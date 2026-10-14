@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Thailand Explorer — เที่ยวไทยไปไหนดี?</title>
+  <link rel="stylesheet" href="css/style.css">
+  <!-- โหลดข้อมูลก่อนโค้ดที่ใช้ข้อมูล; defer รอ HTML พร้อม -->
+  <script src="js/data.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#explore">ข้ามไปสถานที่ท่องเที่ยว</a>
+  <header class="navbar">
+    <a class="brand" href="#home">THAILAND EXPLORER</a>
+    <nav aria-label="เมนูหลัก">
+      <a href="#home">Home</a><a href="#explore">Explore</a>
+      <a href="#discover">Discover</a><a href="#about">About</a>
+    </nav>
+  </header>
+  <main>
+    <section id="home" class="hero parallax">
+      <div class="hero-content">
+        <p class="eyebrow">42 BANGKOK · DISCOVERY PISCINE RUSH</p>
+        <h1>เที่ยวไทย<br>ไปไหนดี?</h1>
+        <p>ทะเล ภูเขา และเรื่องราวของเมืองเก่า เริ่มต้นการเดินทางครั้งใหม่ของคุณ</p>
+        <a class="button" href="#explore">เริ่มสำรวจสถานที่ ↓</a>
+      </div>
+    </section>
+    <section id="explore" class="container section">
+      <p class="eyebrow">FIND YOUR NEXT JOURNEY</p>
+      <h2>Explore Destinations</h2>
+      <p>9 สถานที่ · 3 รูปแบบการเดินทาง</p>
+      <div class="filters" aria-label="หมวดสถานที่">
+        <button type="button" data-category="all" aria-pressed="true">All</button>
+        <button type="button" data-category="beach" aria-pressed="false">Beach</button>
+        <button type="button" data-category="mountain" aria-pressed="false">Mountain</button>
+        <button type="button" data-category="culture" aria-pressed="false">Culture</button>
+      </div>
+      <p id="destination-count" role="status"></p>
+      <div id="destination-list" class="destination-grid"></div>
+      <noscript>กรุณาเปิด JavaScript เพื่อแสดงข้อมูลสถานที่ท่องเที่ยว</noscript>
+    </section>
+    <section class="scenic parallax" aria-labelledby="scenic-title">
+      <div><p class="eyebrow">TAKE A BREATH</p><h2 id="scenic-title">ออกไปพบมุมใหม่ของไทย</h2><p>บางครั้ง การเดินทางก็เริ่มจากความอยากลอง</p></div>
+    </section>
+    <section id="discover" class="container section">
+      <p class="eyebrow">LET THE JOURNEY SURPRISE YOU</p>
+      <h2>Discover</h2><p>ยังเลือกไม่ได้? ลองสุ่มจากสถานที่ทั้ง 9 แห่ง</p>
+      <button type="button" id="random-button" class="button">สุ่มสถานที่ท่องเที่ยว</button>
+      <div id="random-result" class="random-result" aria-live="polite" aria-atomic="true"><p>กดปุ่มเพื่อค้นพบจุดหมายของคุณ</p></div>
+    </section>
+    <section id="about" class="section about">
+      <div class="container"><p class="eyebrow">A SMALL PROJECT, A NEW JOURNEY</p>
+      <h2>About Thailand Explorer</h2>
+      <p>เว็บไซต์แนะนำสถานที่ท่องเที่ยวในไทย ผลงานทีม 2 คน ภายใน 3 วัน สำหรับ 42 Bangkok Discovery Piscine Rush</p>
+      <p>พัฒนาด้วย HTML, CSS และ JavaScript โดยเก็บข้อมูลสถานที่ไว้ในไฟล์ของโปรเจกต์</p></div>
+    </section>
+  </main>
+  <footer class="container">Thailand Explorer · 42 Bangkok · ภาพประกอบหมวดสร้างโดยทีม ไม่ใช่ภาพถ่ายสถานที่</footer>
+</body>
+</html>

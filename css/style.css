@@ -1,0 +1,48 @@
+/* Member A: layout, responsive และ parallax ทั้งสองจุด */
+:root { --ink: #213d32; --paper: #faf7ef; --accent: #d8ed9d; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 110px; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: Arial, sans-serif; line-height: 1.7; }
+a { color: inherit; }
+button, .button { font: inherit; cursor: pointer; }
+button:focus-visible, a:focus-visible { outline: 3px solid #b46928; outline-offset: 4px; }
+.navbar { position: sticky; top: 0; z-index: 10; display: flex; justify-content: space-between; gap: 20px; padding: 18px 5%; background: var(--paper); border-bottom: 1px solid #d8ddd3; }
+.brand { font-weight: bold; letter-spacing: 1px; text-decoration: none; }
+nav { display: flex; flex-wrap: wrap; gap: 20px; }
+nav a { text-decoration: none; }
+.container { width: min(1100px, 90%); margin: auto; }
+.section { padding: 70px 0; }
+h1 { font-size: clamp(48px, 8vw, 100px); line-height: 1.15; margin: 20px 0; }
+h2 { font-size: clamp(28px, 4vw, 44px); margin: 8px 0; }
+.eyebrow { font-size: 12px; font-weight: bold; letter-spacing: 2px; }
+.hero { min-height: 650px; display: flex; align-items: center; padding: 60px 8%; background-image: linear-gradient(90deg, #213d32ed, #213d3266), url('../assets/images/mountain.svg'); color: white; }
+.hero-content { max-width: 640px; }
+/* fixed ทำให้พื้นหลังนิ่งขณะที่เนื้อหาเลื่อน เกิด parallax แบบ CSS */
+.parallax { background-size: cover; background-position: center; background-attachment: fixed; }
+.button { display: inline-block; padding: 12px 24px; border: 0; border-radius: 6px; background: var(--accent); color: var(--ink); text-decoration: none; }
+.filters { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.filters button { padding: 8px 20px; border: 1px solid #bcc9bc; border-radius: 30px; background: transparent; color: var(--ink); }
+.filters button[aria-pressed="true"] { background: var(--ink); color: white; }
+.destination-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.destination-card { background: white; border: 1px solid #e0e4da; border-radius: 12px; overflow: hidden; }
+.destination-card img { display: block; width: 100%; aspect-ratio: 8 / 5; object-fit: cover; }
+.card-content { padding: 20px; }
+.card-content h3 { margin: 8px 0; font-size: 22px; }
+.card-content p { margin: 8px 0; }
+.category { font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+.scenic { min-height: 360px; display: grid; place-items: center; text-align: center; padding: 40px 5%; color: white; background-image: linear-gradient(#213d3288, #213d3288), url('../assets/images/beach.svg'); }
+.random-result { max-width: 480px; margin-top: 24px; }
+.about { background: #e8eddf; }
+footer { padding: 28px 0; font-size: 13px; }
+.skip-link { position: absolute; top: -100px; left: 10px; z-index: 20; }
+.skip-link:focus { top: 10px; background: white; padding: 10px; }
+@media (max-width: 800px) {
+  .navbar { flex-direction: column; gap: 8px; padding: 12px 5%; }
+  nav { gap: 16px; font-size: 14px; }
+  .destination-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .hero { min-height: 520px; }
+}
+@media (max-width: 500px) { .destination-grid { grid-template-columns: 1fr; } .section { padding: 48px 0; } }
+/* Mobile browsers รองรับ fixed ไม่เท่ากัน; ลดการเคลื่อนไหวเพื่อความอ่านง่าย */
+@media (max-width: 800px), (prefers-reduced-motion: reduce) { .parallax { background-attachment: scroll; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
