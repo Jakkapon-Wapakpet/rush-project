@@ -23,10 +23,11 @@ python -m http.server 8000
 ## โครงสร้าง
 
 - `index.html` — โครงสร้างหน้าเว็บและ sections ทั้งหมด
-- `assets/css/style.css` — layout, สี, responsive และสไตล์ฉากเต็มจอ
+- `assets/css/style.css` — layout, สีโทนภูเขายามเช้า, responsive และชั้นภูเขาหน้าแรก
 - `assets/js/data.js` — ข้อมูลสถานที่ 9 แห่ง
 - `assets/js/main.js` — การแสดงผล ตัวกรอง รายการโปรด รายละเอียด และการสุ่ม
-- `assets/images/generated/` — ภาพท่องเที่ยวที่สร้างด้วย AI ทั้ง 14 ภาพ พร้อมชุด prompt ใน `prompts.json`
+- `assets/images/parallax/` — ภาพหน้าแรก 4 ชั้น (ฟ้า ภูเขาไกล ภูเขากลาง+เจดีย์ ป่าหน้าสุด) เป็น WebP พื้นใส พร้อมที่มาใน `prompts.json`
+- `assets/images/generated/` — ภาพ AI ของหมวด 3 ภาพ และสถานที่ 9 ภาพ พร้อม prompt ใน `prompts.json` (`hero.jpg` กับ `scenic.jpg` เก็บไว้แต่ไม่ได้ใช้แล้ว)
 - `assets/photos/` — พื้นที่สำหรับภาพถ่ายสถานที่
 - `.github/pull_request_template.md` — เช็กลิสต์ก่อนรวมงาน
 - `auteur.example` — ตัวอย่างไฟล์รายชื่อผู้จัดทำ
@@ -38,8 +39,7 @@ python -m http.server 8000
 3. `assets/js/main.js` เรียก `renderDestinations('all')` แล้วสร้างการ์ดผ่าน `createCard`
 4. กด Filter จะคัด array ด้วย `filter` แล้ววาดใหม่; กด Random จะสุ่ม index
 5. `assets/css/style.css` ใช้ Grid สำหรับการ์ด และ media query เปลี่ยน 3 → 2 → 1 คอลัมน์
-6. ฉากเต็มจอ 9 สถานที่ (`#journey`) สร้างจาก `data.js` ใน `main.js` ส่วน 8
-7. Parallax: ทุก element ที่มี `data-scene` จะขยับลูกที่มี `data-speed` ตามระยะห่างจากกลางจอ (ภาพ `0.35` เลื่อนช้า, ข้อความ `-0.2` ลอยเร็ว, `data-fade` จางเมื่อออกจากกลางจอ) ใช้ `transform` จึงทำงานบนมือถือด้วย และปิดเองเมื่อผู้ใช้ตั้งค่าลดการเคลื่อนไหว
+6. Parallax มีเฉพาะหน้าแรก: ภาพ 4 ชั้นใน `assets/images/parallax/` วางซ้อนกันด้วย `<img class="layer">` แต่ละชั้นมี `data-depth` (ฟ้า `0.6`, ภูเขาไกล `0.45`, ข้อความ `0.35`, ภูเขากลาง `0.25`, ป่าหน้าสุด `0.1`) `main.js` ส่วน 8 เลื่อนแต่ละชั้นลง `scrollY × depth` ด้วย `transform` ชั้นที่ depth มากจะดูอยู่ไกล ข้อความค่อยๆ จางหายเมื่อเลื่อนลง ทำงานบนมือถือด้วย และปิดเองเมื่อผู้ใช้ตั้งค่าลดการเคลื่อนไหว
 
 รายละเอียดข้อมูลใช้ textContent เพื่อลดความเสี่ยงจากการแทรก HTML และไม่ต้องใช้ framework
 ## การแก้ไขข้อมูลและรูปภาพ
@@ -50,7 +50,7 @@ python -m http.server 8000
 
 หากเพิ่มภาพถ่าย ให้เก็บใน `assets/photos/` แล้วกำหนด `photo` เช่น `assets/photos/railay.jpg` พร้อมตรวจสิทธิ์และระบุแหล่งที่มาของภาพ
 
-ภาพที่แสดงในเว็บปัจจุบันสร้างด้วยเครื่องมือ ImageGen แบบ built-in และเก็บเป็น JPEG ใน `assets/images/generated/` รวมภาพหน้าแรก ภาพคั่น ภาพหมวดหมู่ 3 ภาพ และสถานที่ 9 ภาพ ใช้โทนภาพท่องเที่ยวสมจริง แสงธรรมชาติอบอุ่น สีเขียวและน้ำทะเล องค์ประกอบแนวนอน ไม่มีข้อความหรือโลโก้ ชุด prompt เก็บใน `assets/images/generated/prompts.json` ภาพเหล่านี้เป็นภาพประกอบจาก AI อาจแตกต่างจากสถานที่จริง ฟอนต์ยังเรียกจาก Google Fonts
+ภาพหน้าแรกทีมสร้างด้วย AI จาก prompt ใน `assets/images/parallax/prompts.json` (สร้างแต่ละชั้นบนพื้นสีม่วงชมพู `#FF00FF` แล้วลบพื้นออกเป็นพื้นใส) ภาพการ์ดสร้างด้วยเครื่องมือ ImageGen แบบ built-in และเก็บเป็น JPEG ใน `assets/images/generated/` คือภาพหมวดหมู่ 3 ภาพ และสถานที่ 9 ภาพ ใช้โทนภาพท่องเที่ยวสมจริง แสงธรรมชาติอบอุ่น สีเขียวและน้ำทะเล องค์ประกอบแนวนอน ไม่มีข้อความหรือโลโก้ ชุด prompt เก็บใน `assets/images/generated/prompts.json` ภาพเหล่านี้เป็นภาพประกอบจาก AI อาจแตกต่างจากสถานที่จริง ฟอนต์ยังเรียกจาก Google Fonts
 
 ภาพเก่าใน `assets/photos/` เก็บไว้เป็นต้นฉบับสำรองและไม่ได้เรียกใช้ในเว็บ: ภาพวัดอรุณโดย [Neitram — Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Wat_arun_bangkok.jpg) ใช้ภายใต้ [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) ภาพถ่ายประกอบอื่นมาจาก Unsplash
 

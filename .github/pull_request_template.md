@@ -6,7 +6,7 @@
 - [ ] All=9 และแต่ละหมวด=3
 - [ ] Random แสดงชื่อ จังหวัด หมวด และรายละเอียดตรงกับข้อมูล
 - [ ] Desktop/Mobile ไม่มี overflow
-- [ ] ตรวจ Hero/Scenic parallax และ reduced motion
+- [ ] ตรวจ parallax ภูเขาซ้อนชั้นเฉพาะหน้าแรก (section อื่นต้องเลื่อนปกติ) และ reduced motion
 - [ ] รูป local โหลดได้และระบุแหล่งที่มาเมื่อใช้ภาพจริง
 
 ## งานค้าง / ข้อจำกัด
