@@ -4,3 +4,25 @@
 
 # ภาพต้นฉบับขนาดใหญ่ที่วางไว้ที่โฟลเดอร์หลัก (ใช้เวอร์ชัน WebP ใน assets/images/parallax/ แทน)
 /*.png
+
+# บริบทส่วนตัวของเครื่องมือและไฟล์ตั้งค่าเฉพาะเครื่อง
+/PRODUCT.md
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.log
+*.tmp
+*.bak
+*~
+__pycache__/
+*.py[cod]
+node_modules/
+.env
+.env.*
+!.env.example
+
+# ต้นฉบับภาพสำหรับแก้ไข เก็บในเครื่อง; เว็บใช้ WebP เท่านั้น
+/assets/images/parallax/realistic-v2/*.png
+/assets/images/parallax/realistic-v2/preview.jpg
