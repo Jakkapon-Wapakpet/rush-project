@@ -1,0 +1,60 @@
+{
+  "tool": "built-in image_gen",
+  "format": "JPEG quality 88; hero/scenic width 1600; other width 960",
+  "hero": "Photorealistic Railay Krabi sunrise landscape: emerald limestone cliffs, turquoise Andaman water, longtail boat at right. Darker uncluttered left half for white headline. Warm natural editorial tourism photo, realistic textures. No text/logos/watermark/collage.",
+  "sharedPrompt": "Use case: photorealistic-natural. Asset type: Thailand Explorer website travel photograph. ONE standalone landscape photograph, 16:9 wide. Premium editorial travel photography, natural realistic textures, warm soft sunlight, forest greens, restrained turquoise, creamy warm highlights, realistic atmospheric depth. Keep landmark in middle 70 percent for mobile cropping. No close-up people, text, labels, logos, watermarks, borders or collage. AI-created travel illustration in photographic style.",
+  "assets": {
+    "scenic": {
+      "file": "scenic.jpg",
+      "scene": "Wide panoramic misty rolling mountains of northern Thailand, layered lush forest ridges at dawn, luminous pale peach sky, tranquil cinematic landscape, center space for a white quote overlay."
+    },
+    "category-beach": {
+      "file": "category-beach.jpg",
+      "scene": "Wide tropical Thai beach bay with turquoise water, ivory sand, coconut palms and limestone island in distance. Clear simple landscape composition for a small category card."
+    },
+    "category-mountain": {
+      "file": "category-mountain.jpg",
+      "scene": "Wide northern Thailand mountains with mist between lush green ridges and warm sunrise. Clear simple landscape composition for a small category card."
+    },
+    "category-culture": {
+      "file": "category-culture.jpg",
+      "scene": "Wide Thai temple courtyard with elegant golden and white Buddhist architecture and warm morning light. Clear simple landscape composition for a small category card."
+    },
+    "railay": {
+      "file": "railay.jpg",
+      "scene": "Railay beach Krabi Thailand, towering weathered limestone cliffs surrounding turquoise sea, traditional longtail boat near white sandy beach, lush palms."
+    },
+    "samed": {
+      "file": "samed.jpg",
+      "scene": "Koh Samet Thailand, pristine fine white sand, gently curving shore, crystal clear turquoise shallow water, tropical greenery and distant modest fishing boats."
+    },
+    "larn": {
+      "file": "larn.jpg",
+      "scene": "Koh Larn near Pattaya Thailand, elevated view across a turquoise bay, white sandy beach, green tropical hillside, small boats offshore."
+    },
+    "inthanon": {
+      "file": "inthanon.jpg",
+      "scene": "Doi Inthanon Thailand, the two recognizable royal pagodas with ornamental flower gardens above layers of misty green mountains, crisp cool sunrise."
+    },
+    "phu-kradueng": {
+      "file": "phu-kradueng.jpg",
+      "scene": "Phu Kradueng Thailand, sandstone cliff viewpoint on a pine forest plateau, broad distant mountain ridges in soft morning mist, native pines framing the scene."
+    },
+    "khao-yai": {
+      "file": "khao-yai.jpg",
+      "scene": "Khao Yai Thailand, lush tropical rainforest and a beautiful natural waterfall cascading over dark stone ledges into an emerald pool, soft sun filtering through foliage."
+    },
+    "wat-arun": {
+      "file": "wat-arun.jpg",
+      "scene": "Wat Arun Bangkok Thailand, recognizable tall white central prang with intricate porcelain ornamentation, smaller surrounding prangs, Chao Phraya river foreground, warm sunset sky, authentic Thai architectural silhouette."
+    },
+    "ayutthaya": {
+      "file": "ayutthaya.jpg",
+      "scene": "Ayutthaya historical park Thailand, ancient red brick temple ruins and elegant weathered prang towers among lush green lawn and venerable trees in soft golden morning light."
+    },
+    "sukhothai": {
+      "file": "sukhothai.jpg",
+      "scene": "Sukhothai historical park Thailand, graceful lotus bud chedi and ancient seated Buddha among brick columns, still reflective lotus pond foreground and trees, beautiful soft sunrise."
+    }
+  }
+}

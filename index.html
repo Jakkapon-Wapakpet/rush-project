@@ -2,15 +2,15 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Thailand Explorer — เพื่อนร่วมทางเที่ยวไทย</title>
   <meta name="description" content="แนะนำสถานที่ท่องเที่ยวในไทย ทะเล ภูเขา และวัฒนธรรม พร้อมข้อมูลที่ช่วยวางแผนทริป">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,600;1,500;1,600&family=Prompt:wght@400;500;600&family=Mali:wght@500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
-  <script src="js/data.js" defer></script>
-  <script src="js/main.js" defer></script>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script src="assets/js/data.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#explore">ข้ามไปสถานที่ท่องเที่ยว</a>
@@ -19,7 +19,8 @@
       <svg viewBox="0 0 48 32" width="40" height="27" aria-hidden="true"><path d="M2 28 L16 8 L24 18 L32 4 L46 28" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 31 Q14 27 24 31 T44 31" fill="none" stroke="#F4A261" stroke-width="2.4" stroke-linecap="round"/></svg>
       <span>Thailand<br>Explorer</span>
     </a>
-    <nav aria-label="เมนูหลัก">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">เมนู <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></button>
+    <nav id="main-nav" aria-label="เมนูหลัก">
       <a href="#home">หน้าแรก</a><a href="#explore">สำรวจสถานที่</a>
       <a href="#discover">สุ่มเที่ยว</a><a href="#about">เกี่ยวกับเรา</a>
     </nav>
@@ -27,25 +28,23 @@
   <main>
     <section id="home" class="hero parallax">
       <div class="hero-content">
-        <p class="eyebrow">42 Bangkok · Discovery Piscine Rush</p>
-        <h1>ออกไปค้นพบ<br><span class="script">ประเทศไทยในแบบของคุณ</span></h1>
+        <h1>ออกไปค้นพบ<br><span class="script">ประเทศไทย<br>ในแบบของคุณ</span></h1>
         <p>รวมสถานที่เที่ยวสวยๆ ทั้งทะเล ภูเขา และวัฒนธรรม ให้คุณเลือกได้ตามสไตล์การเดินทางของคุณ</p>
-        <a class="button" href="#explore">เริ่มสำรวจ →</a>
+        <div class="hero-actions"><a class="button" href="#categories">เริ่มสำรวจ <span aria-hidden="true">↗</span></a><a class="hero-secondary" href="#discover">ลองสุ่มจุดหมาย</a></div>
       </div>
-      <p class="stamp" aria-hidden="true">Thailand<br>is always<br>a good idea</p>
+      <p class="hero-note">THAILAND EXPLORER<span>ทะเล · ภูเขา · วัฒนธรรม</span></p>
     </section>
 
-    <section class="container section categories" aria-labelledby="cat-title">
+    <section id="categories" class="container section categories" aria-labelledby="cat-title">
       <h2 id="cat-title">หมวดหมู่ยอดนิยม</h2>
       <div class="category-tiles">
-        <button type="button" class="tile tile-beach" data-jump="beach"><img src="assets/images/beach.svg" alt="" width="480" height="300"><span>ทะเล</span></button>
-        <button type="button" class="tile tile-mountain" data-jump="mountain"><img src="assets/images/mountain.svg" alt="" width="480" height="300"><span>ภูเขา</span></button>
-        <button type="button" class="tile tile-culture" data-jump="culture"><img src="assets/images/culture.svg" alt="" width="480" height="300"><span>วัฒนธรรม</span></button>
+        <button type="button" class="tile tile-beach" data-jump="beach"><img src="assets/images/generated/category-beach.jpg" alt="" width="480" height="300"><span>ทะเล</span></button>
+        <button type="button" class="tile tile-mountain" data-jump="mountain"><img src="assets/images/generated/category-mountain.jpg" alt="" width="480" height="300"><span>ภูเขา</span></button>
+        <button type="button" class="tile tile-culture" data-jump="culture"><img src="assets/images/generated/category-culture.jpg" alt="" width="480" height="300"><span>วัฒนธรรม</span></button>
       </div>
     </section>
 
     <section id="explore" class="container section">
-      <p class="eyebrow">สำรวจสถานที่</p>
       <h2>สถานที่ท่องเที่ยวยอดนิยม</h2>
       <p class="lead">9 สถานที่ · 3 รูปแบบการเดินทาง · กดการ์ดเพื่อดูรายละเอียด</p>
       <div class="filters" role="group" aria-label="หมวดสถานที่">
@@ -61,24 +60,25 @@
     </section>
 
     <section class="scenic parallax" aria-labelledby="scenic-title">
-      <div><p class="eyebrow">พักหายใจ</p><h2 id="scenic-title" class="script">บางครั้ง การเดินทางก็เริ่มจากความอยากลอง</h2></div>
+      <div><h2 id="scenic-title" class="script">บางครั้ง การเดินทาง<br>ก็เริ่มจากความอยากลอง</h2><a class="scenic-link" href="#discover">ค้นพบจุดหมายถัดไป <span aria-hidden="true">↗</span></a></div>
     </section>
 
     <section id="discover" class="container section">
-      <p class="eyebrow">สุ่มเที่ยว</p>
+      <div class="discover-intro">
       <h2>ยังเลือกไม่ได้?</h2><p class="lead">ให้เราออกตั๋วเที่ยวถัดไปให้ จากสถานที่ทั้ง 9 แห่ง</p>
       <button type="button" id="random-button" class="button">สุ่มสถานที่ท่องเที่ยว</button>
-      <div id="random-result" class="random-result" aria-live="polite" aria-atomic="true"><p>กดปุ่มเพื่อค้นพบจุดหมายของคุณ</p></div>
+      </div>
+      <div id="random-result" class="random-result" aria-live="polite" aria-atomic="true"><div class="random-preview"><img src="assets/images/generated/railay.jpg" alt="ภาพสร้างด้วย AI ประกอบการเดินทาง" width="960" height="540" loading="lazy"><p>กดปุ่มเพื่อค้นพบจุดหมายของคุณ</p></div></div>
     </section>
 
     <section id="about" class="section about">
-      <div class="container"><p class="eyebrow">เกี่ยวกับเรา</p>
+      <div class="container">
       <h2>Thailand Explorer</h2>
       <p>เว็บไซต์แนะนำสถานที่ท่องเที่ยวในไทย ผลงานทีม 2 คน ภายใน 3 วัน สำหรับ 42 Bangkok Discovery Piscine Rush</p>
       <p>พัฒนาด้วย HTML, CSS และ JavaScript โดยเก็บข้อมูลสถานที่ไว้ในไฟล์ของโปรเจกต์</p></div>
     </section>
   </main>
-  <footer class="container">Thailand Explorer · 42 Bangkok · ภาพประกอบสร้างโดยทีม ไม่ใช่ภาพถ่ายสถานที่</footer>
+  <footer class="container">Thailand Explorer · 42 Bangkok<br>ภาพท่องเที่ยวสร้างด้วย AI เพื่อประกอบเนื้อหา อาจแตกต่างจากสถานที่จริง</footer>
 
   <dialog id="detail-dialog" aria-labelledby="detail-title"></dialog>
 </body>

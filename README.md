@@ -1,30 +1,76 @@
-# Thailand Explorer — Day 1
+# Thailand Explorer
 
-HTML / CSS / JavaScript แบบ Single Page ไม่มี dependency, backend หรือ database
-เปิด `index.html` โดยตรง หรือใช้ `python3 -m http.server 8000` แล้วเปิด http://localhost:8000
+เว็บไซต์แนะนำสถานที่ท่องเที่ยวในประเทศไทย สำหรับ 42 Bangkok Discovery Piscine Rush พัฒนาด้วย HTML, CSS และ JavaScript แบบหน้าเดียว ไม่ต้องติดตั้งแพ็กเกจหรือ build ก่อนใช้งาน
+
+## ฟีเจอร์
+
+- แนะนำสถานที่ 9 แห่ง แบ่งเป็นทะเล ภูเขา และวัฒนธรรม หมวดละ 3 แห่ง
+- กรองตามหมวด และบันทึกรายการโปรดใน `localStorage` ของเบราว์เซอร์
+- เปิดรายละเอียด ช่วงเวลาที่เหมาะสม การเดินทาง เคล็ดลับ และลิงก์ Google Maps
+- สุ่มจุดหมายจากสถานที่ทั้งหมด แม้กำลังเลือกหมวดอยู่ และอาจสุ่มได้สถานที่เดิมซ้ำ
+- รองรับมือถือ แท็บเล็ต และเดสก์ท็อป พร้อมลดการเคลื่อนไหวตามการตั้งค่าของผู้ใช้
+
+## วิธีเปิดเว็บ
+
+เปิด `index.html` ในเบราว์เซอร์ได้โดยตรง หรือหากติดตั้ง Python ให้เปิด terminal ที่โฟลเดอร์โปรเจกต์แล้วรัน:
+
+```sh
+python -m http.server 8000
+```
+
+จากนั้นเปิด [http://localhost:8000](http://localhost:8000) และกด `Ctrl+C` ใน terminal เมื่อต้องการหยุดเซิร์ฟเวอร์ หากเครื่องใช้คำสั่ง `python3` ให้ใช้แทน `python`
 
 ## โครงสร้าง
-- index.html — Navbar, Hero, Explore, Scenic, Discover, About, Footer
-- css/style.css — layout, สี, responsive, CSS parallax
-- js/data.js — ข้อมูล 9 แห่ง หมวดละ 3
-- js/main.js — createCard, renderDestinations, filter และ random
-- assets/images/ — SVG ภาพประกอบหมวด ยังไม่ใช่ภาพถ่ายสถานที่จริง
-- docs/TEAM_PLAN.md — แบ่งงาน 3 วัน
-- docs/GITHUB_WORKFLOW.md — Branch และ PR
-- docs/DAY1_REVIEW.md — ผลตรวจและข้อจำกัด
-- .github/pull_request_template.md — เช็กลิสต์ก่อนรวมงาน
-- auteur.example — ต้องเปลี่ยนเป็น auteur และใส่ 42 login จริงสองคนก่อนส่ง
+
+- `index.html` — โครงสร้างหน้าเว็บและ sections ทั้งหมด
+- `assets/css/style.css` — layout, สี, responsive และ CSS parallax
+- `assets/js/data.js` — ข้อมูลสถานที่ 9 แห่ง
+- `assets/js/main.js` — การแสดงผล ตัวกรอง รายการโปรด รายละเอียด และการสุ่ม
+- `assets/images/generated/` — ภาพท่องเที่ยวที่สร้างด้วย AI ทั้ง 14 ภาพ พร้อมชุด prompt ใน `prompts.json`
+- `assets/photos/` — พื้นที่สำหรับภาพถ่ายสถานที่
+- `.github/pull_request_template.md` — เช็กลิสต์ก่อนรวมงาน
+- `auteur.example` — ตัวอย่างไฟล์รายชื่อผู้จัดทำ
 
 ## ลำดับอ่านโค้ด
-1. index.html กำหนดพื้นที่และ id ที่ JavaScript ใช้
-2. data.js เก็บ array ของ object แต่ละ object คือสถานที่หนึ่งแห่ง
-3. main.js เรียก renderDestinations('all') แล้วสร้างการ์ดผ่าน createCard
-4. กด Filter จะคัด array ด้วย filter แล้ววาดใหม่; กด Random จะสุ่ม index
-5. style.css ใช้ Grid สำหรับการ์ด และ media query เปลี่ยน 3 → 2 → 1 คอลัมน์
-6. .parallax ใช้ background-attachment: fixed สองจุด; มือถือ/reduced motion ใช้ scroll
+
+1. `index.html` กำหนดพื้นที่และ id ที่ JavaScript ใช้
+2. `assets/js/data.js` เก็บ array ของ object แต่ละ object คือสถานที่หนึ่งแห่ง
+3. `assets/js/main.js` เรียก `renderDestinations('all')` แล้วสร้างการ์ดผ่าน `createCard`
+4. กด Filter จะคัด array ด้วย `filter` แล้ววาดใหม่; กด Random จะสุ่ม index
+5. `assets/css/style.css` ใช้ Grid สำหรับการ์ด และ media query เปลี่ยน 3 → 2 → 1 คอลัมน์
+6. `.parallax` ใช้ `background-attachment: fixed` สองจุด; มือถือ/reduced motion ใช้ `scroll`
 
 รายละเอียดข้อมูลใช้ textContent เพื่อลดความเสี่ยงจากการแทรก HTML และไม่ต้องใช้ framework
-Random อาจได้สถานที่ซ้ำได้ตามปกติ และสุ่มจากทั้งหมดแม้กำลังเลือกหมวดอยู่
+## การแก้ไขข้อมูลและรูปภาพ
+
+แก้ข้อมูลใน `assets/js/data.js` โดยแต่ละสถานที่ต้องมี `id` ไม่ซ้ำ และใช้ `category` เป็น `beach`, `mountain` หรือ `culture`
+
+การ์ดเลือกภาพจาก `photo` ก่อน หากไม่มีจะใช้ `image` หากโหลดไม่ได้จะแสดงภาพประกอบหมวด `assets/images/generated/category-<หมวด>.jpg` แทน ใช้ร่วมกันทั้งรายการสถานที่ หน้ารายละเอียด และผลการสุ่ม
+
+หากเพิ่มภาพถ่าย ให้เก็บใน `assets/photos/` แล้วกำหนด `photo` เช่น `assets/photos/railay.jpg` พร้อมตรวจสิทธิ์และระบุแหล่งที่มาของภาพ
+
+ภาพที่แสดงในเว็บปัจจุบันสร้างด้วยเครื่องมือ ImageGen แบบ built-in และเก็บเป็น JPEG ใน `assets/images/generated/` รวมภาพหน้าแรก ภาพคั่น ภาพหมวดหมู่ 3 ภาพ และสถานที่ 9 ภาพ ใช้โทนภาพท่องเที่ยวสมจริง แสงธรรมชาติอบอุ่น สีเขียวและน้ำทะเล องค์ประกอบแนวนอน ไม่มีข้อความหรือโลโก้ ชุด prompt เก็บใน `assets/images/generated/prompts.json` ภาพเหล่านี้เป็นภาพประกอบจาก AI อาจแตกต่างจากสถานที่จริง ฟอนต์ยังเรียกจาก Google Fonts
+
+ภาพเก่าใน `assets/photos/` เก็บไว้เป็นต้นฉบับสำรองและไม่ได้เรียกใช้ในเว็บ: ภาพวัดอรุณโดย [Neitram — Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Wat_arun_bangkok.jpg) ใช้ภายใต้ [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) ภาพถ่ายประกอบอื่นมาจาก Unsplash
+
+## การตรวจสอบเบื้องต้น
+
+หากติดตั้ง Node.js ให้ตรวจ syntax ด้วย:
+
+```sh
+node --check assets/js/data.js
+node --check assets/js/main.js
+```
+
+เปิดเว็บแล้วตรวจตัวกรอง การเพิ่มและลบรายการโปรด การเปิดและปิดรายละเอียด การสุ่มสถานที่ และการแสดงผลบนหน้าจอขนาดต่าง ๆ
+
+## การจัดเก็บข้อมูล
+
+ไม่มี backend หรือฐานข้อมูล ข้อมูลสถานที่เก็บในไฟล์ JavaScript รายการโปรดเก็บเฉพาะเบราว์เซอร์และ origin ที่ใช้งาน ไม่ซิงก์ข้ามอุปกรณ์ หากบันทึกไม่ได้จะเก็บในหน่วยความจำระหว่างเปิดหน้าเว็บ
 
 ## ก่อนส่ง
-ภาพสถานที่จริงพร้อมแหล่งที่มา, ตรวจ Wireframe ต้นฉบับ, ใส่ auteur จริง และทดสอบ Desktop/Mobile ด้วยสายตา
+
+- สร้างไฟล์ `auteur` จาก `auteur.example` และใส่ 42 login จริงของผู้จัดทำทั้งสองคน
+- ตรวจแหล่งที่มาและสิทธิ์ใช้ภาพ รวมถึงข้อความอธิบายภาพให้ตรงกับภาพที่แสดง
+- ตรวจข้อมูลฤดูกาลและการเดินทางกับแหล่งทางการ
+- ทดสอบ Desktop/Mobile และเทียบงานกับข้อกำหนดต้นฉบับ
