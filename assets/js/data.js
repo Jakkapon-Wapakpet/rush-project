@@ -1,4 +1,6 @@
 // ข้อมูลกลาง 9 แห่ง หมวดละ 3 แห่ง
+// โหลดก่อน main.js; id ต้องไม่ซ้ำ เพราะใช้ผูกรายการโปรดและปุ่มหัวใจของสถานที่เดียวกัน
+// category ใช้ค่า beach / mountain / culture ให้ตรงกับตัวกรองและภาพสำรอง
 // photo: ใส่ path ภาพถ่ายจริง เช่น 'assets/photos/railay.jpg'; ถ้าเป็น null จะใช้ image
 // season / trip / tip เป็นข้อมูลทั่วไป ตรวจกับแหล่งทางการก่อนส่งงาน
 const destinations = [

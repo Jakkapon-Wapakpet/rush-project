@@ -1,0 +1,30 @@
+{
+  "tool": "built-in image_gen",
+  "reference": "exec-fc078f7a-77c4-4924-9cb6-b454207ffcf8.png",
+  "size": [
+    1774,
+    887
+  ],
+  "layers": {
+    "sky": {
+      "file": "sky.webp",
+      "transparent": false,
+      "prompt": "Use case: background-extraction. Input image: reference master mountain sunrise panorama, edit target. Produce ONE compositing layer named sky for a multi-plane website parallax. EXACT SAME 2:1 canvas, camera, scene coordinates, scale, illumination and photographic color as reference. Do not crop, zoom, shift or recenter. SKY BACKPLATE only. Remove ALL mountains, forest, pagoda, vegetation and fog. Inpaint their areas with a seamlessly continuous pale blue and peach sunrise sky that extends across the ENTIRE canvas to the bottom. Keep original sky texture and right sunlight direction. Opaque full canvas, no transparency. Result is a production compositing asset, not a preview: no text, borders, labels, cast shadow, new objects, or checkerboard pixels. Preserve the realistic sunrise lighting and coherent geography. Fully opaque sky image."
+    },
+    "far": {
+      "file": "far.webp",
+      "transparent": true,
+      "prompt": "Use case: background-extraction. Input image: reference master mountain sunrise panorama, edit target. Produce ONE compositing layer named far for a multi-plane website parallax. EXACT SAME 2:1 canvas, camera, scene coordinates, scale, illumination and photographic color as reference. Do not crop, zoom, shift or recenter. DISTANT MOUNTAINS layer only. Keep the faint hazy BLUE far mountain horizon and distant misty valley planes, with their top skyline at about 40 percent canvas height. Remove ALL sky ABOVE the skyline to real alpha transparency. Remove ALL nearer green mountains, pagoda and pine branches, replacing their areas BELOW the retained skyline with matching distant blue hazy mountain foothills and mist extending completely to the bottom and both side edges. Top 38 percent entirely transparent. This must be a terrain sheet occupying the LOWER 60 percent canvas, not an isolated object recentered. Result is a production compositing asset, not a preview: no text, borders, labels, cast shadow, new objects, or checkerboard pixels. Preserve the realistic sunrise lighting and coherent geography. Everything absent must be genuinely transparent alpha; preserve transparent canvas margins."
+    },
+    "mid": {
+      "file": "mid.webp",
+      "transparent": true,
+      "prompt": "Use case: background-extraction. Input image: reference master mountain sunrise panorama, edit target. Produce ONE compositing layer named mid for a multi-plane website parallax. EXACT SAME 2:1 canvas, camera, scene coordinates, scale, illumination and photographic color as reference. Do not crop, zoom, shift or recenter. MIDDLE DISTANCE layer only. Keep the emerald green middle mountains, white sea of clouds and the small gold pagoda on the green right ridge. Remove all sky and the distant blue horizon mountains above the middle mountain skyline to TRUE ALPHA transparency; remove foreground pine branches and closest vegetation. Seamlessly extend middle green forest slopes and white fog behind where foreground was removed, filling ALL the canvas below their skyline down to the bottom. Skyline begins around 53 percent height, with pagoda toward right 75 percent x, 62 percent y. Top HALF entirely transparent. Do not vertically recenter the subject. Result is a production compositing asset, not a preview: no text, borders, labels, cast shadow, new objects, or checkerboard pixels. Preserve the realistic sunrise lighting and coherent geography. Everything absent must be genuinely transparent alpha; preserve transparent canvas margins."
+    },
+    "near": {
+      "file": "near.webp",
+      "transparent": true,
+      "prompt": "Use case: background-extraction. Input image: reference master mountain sunrise panorama, edit target. Produce ONE compositing layer named near for a multi-plane website parallax. EXACT SAME 2:1 canvas, camera, scene coordinates, scale, illumination and photographic color as reference. Do not crop, zoom, shift or recenter. NEAREST FOREGROUND vegetation layer only. Keep just the closest dark green detailed forest, left pine branches and lower corner foliage. Remove ALL sky, distant/middle mountains, fog, gold pagoda to TRUE ALPHA transparency. Main forest strip occupies bottom 15-22 percent, with a naturally irregular canopy edge, and framing pine branches hugging extreme left/right edges; center above bottom 20 percent must be transparent so mountains behind can be seen. Fill the strip to bottom edge. Original photographic textures, fine foliage alpha edges. No white or checkerboard backdrop. Result is a production compositing asset, not a preview: no text, borders, labels, cast shadow, new objects, or checkerboard pixels. Preserve the realistic sunrise lighting and coherent geography. Everything absent must be genuinely transparent alpha; preserve transparent canvas margins."
+    }
+  }
+}

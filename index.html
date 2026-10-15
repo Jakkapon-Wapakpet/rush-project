@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600&family=Prompt:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css?v=7">
+  <link rel="stylesheet" href="assets/css/style.css?v=10">
   <script src="assets/js/data.js?v=7" defer></script>
-  <script src="assets/js/main.js?v=7" defer></script>
+  <script src="assets/js/main.js?v=10" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#explore">ข้ามไปสถานที่ท่องเที่ยว</a>
@@ -37,12 +37,21 @@
   </header>
 
   <main>
-    <!-- หน้าแรก: ภาพภูเขาซ้อน 4 ชั้น (parallax) แต่ละชั้นมี data-depth = เลื่อนตามช้าลงเท่าไร ยิ่งมากยิ่งดูไกล -->
-    <section id="home" class="hero">
-      <img class="layer layer-sky" data-depth="0.6" src="assets/images/parallax/sky.webp" alt="" width="1774" height="887" fetchpriority="high">
-      <img class="layer layer-far" data-depth="0.45" src="assets/images/parallax/far.webp" alt="" width="1774" height="887">
+    <!-- ฉาก 2.5D: ท้องฟ้า → เขาไกล → ข้อความ → เขากับเจดีย์ → ป่าด้านหน้า -->
+    <section id="home" class="hero-scene" aria-label="หน้าแรก">
+    <div class="hero">
+      <img class="layer layer-sky" data-depth="0.92" src="assets/images/parallax/realistic-v2/sky.webp" alt="" width="1774" height="887" fetchpriority="high">
+      <img class="layer layer-far" data-depth="0.75" src="assets/images/parallax/realistic-v2/far.webp" alt="" width="1774" height="887">
+      <div class="hero-birds" aria-hidden="true">
+        <div class="bird-flock">
+          <svg class="bird" viewBox="0 0 40 20"><path d="M2 5 Q12 3 20 16 Q28 3 38 5 Q27 8 20 19 Q13 8 2 5Z"/></svg>
+          <svg class="bird" viewBox="0 0 40 20"><path d="M2 5 Q12 3 20 16 Q28 3 38 5 Q27 8 20 19 Q13 8 2 5Z"/></svg>
+          <svg class="bird" viewBox="0 0 40 20"><path d="M2 5 Q12 3 20 16 Q28 3 38 5 Q27 8 20 19 Q13 8 2 5Z"/></svg>
+          <svg class="bird" viewBox="0 0 40 20"><path d="M2 5 Q12 3 20 16 Q28 3 38 5 Q27 8 20 19 Q13 8 2 5Z"/></svg>
+        </div>
+      </div>
 
-      <div class="hero-copy" data-depth="0.35">
+      <div class="hero-copy" data-depth="0.15">
         <h1><span>ออกไปค้นพบประเทศไทย</span> <span class="accent">ในแบบของคุณ</span></h1>
         <p>รวมสถานที่เที่ยวสวยๆ ทั้งทะเล ภูเขา และวัฒนธรรม ให้คุณเลือกได้ตามสไตล์การเดินทางของคุณ</p>
         <div class="actions">
@@ -51,11 +60,13 @@
         </div>
       </div>
 
-      <img class="layer layer-mid" data-depth="0.25" src="assets/images/parallax/mid.webp" alt="" width="1774" height="887">
-      <img class="layer layer-near" data-depth="0.1" src="assets/images/parallax/near.webp" alt="" width="1774" height="887">
+      <img class="layer layer-mid" data-depth="0.32" src="assets/images/parallax/realistic-v2/mid.webp" alt="" width="1774" height="887">
+      <img class="layer layer-near" data-depth="0" src="assets/images/parallax/realistic-v2/near.webp" alt="" width="1774" height="887">
       <div class="hero-mist" aria-hidden="true"></div>
+    </div>
     </section>
 
+    <!-- หมวดท่องเที่ยว: ปุ่ม data-jump ตั้งตัวกรองและพาไปยังรายการสถานที่ -->
     <section id="categories" class="section" aria-labelledby="cat-title">
       <div class="container">
         <h2 id="cat-title">เลือกแบบที่ใช่</h2>
@@ -68,6 +79,7 @@
       </div>
     </section>
 
+    <!-- รายการสถานที่: JavaScript สร้างการ์ดจาก data.js ลงใน destination-list -->
     <section id="explore" class="section section-white">
       <div class="container">
         <h2>สถานที่ท่องเที่ยวยอดนิยม</h2>
@@ -85,6 +97,7 @@
       </div>
     </section>
 
+    <!-- สุ่มจุดหมายจากทุกหมวด ไม่ขึ้นกับตัวกรองที่เลือกในรายการ -->
     <section id="discover" class="section section-forest">
       <div class="container discover">
         <div>
@@ -98,6 +111,7 @@
       </div>
     </section>
 
+    <!-- ข้อมูลผู้จัดทำและขอบเขตของโครงการ -->
     <section id="about" class="section about">
       <div class="container">
         <h2>Thailand Explorer</h2>
@@ -111,6 +125,7 @@
     <div class="container">Thailand Explorer · 42 Bangkok<br>ภาพท่องเที่ยวสร้างด้วย AI เพื่อประกอบเนื้อหา อาจแตกต่างจากสถานที่จริง</div>
   </footer>
 
+  <!-- ใช้ dialog เดียวร่วมกันทุกสถานที่ เนื้อหาถูกประกอบตอนกดดูรายละเอียด -->
   <dialog id="detail-dialog" aria-labelledby="detail-title"></dialog>
 </body>
 </html>

@@ -370,24 +370,42 @@ randomButton.addEventListener('click', () => {
 // ==========================================
 // 8. Parallax ภูเขาซ้อนชั้น (เฉพาะหน้าแรก)
 // ==========================================
-// ทุกชั้นในหน้าแรกที่มี data-depth จะเลื่อนลงตาม scroll x depth (ตามจอไปบางส่วน)
-// depth มาก = ตามจอไปมาก = ดูอยู่ไกล (ฟ้า 0.6), depth น้อย = เลื่อนเกือบปกติ = ดูอยู่ใกล้ (ป่าหน้าสุด 0.1)
+// หน้าเว็บเลื่อนตามปกติ: ป่าด้านหน้าไหลพ้นจอ เผยวิวไกลที่เคลื่อนช้ากว่า โดยไม่ซูม
 const hero = document.getElementById('home');
-const heroLayers = [...hero.querySelectorAll('[data-depth]')].map(el => ({ el, depth: parseFloat(el.dataset.depth) }));
-const heroCopy = hero.querySelector('.hero-copy');
+const heroStage = hero.querySelector('.hero');
+// นกบินวนด้วย CSS; พักเมื่อหน้าแรกพ้นจอหรือแท็บถูกซ่อน แล้วบินต่อเมื่อกลับมาดู
+let birdsVisible = false;
+function syncBirds() {
+  hero.classList.toggle('birds-paused', !birdsVisible || document.hidden);
+}
+new IntersectionObserver(([entry]) => {
+  birdsVisible = entry.isIntersecting;
+  syncBirds();
+}).observe(hero);
+document.addEventListener('visibilitychange', syncBirds);
+syncBirds();
+// depth คือระยะชดเชยการเลื่อน: ใกล้ 1 = ฉากไกลเกือบอยู่นิ่ง, 0 = เลื่อนตามเอกสาร
+// ลำดับการบังภาพกำหนดด้วย z-index ใน CSS แยกจากความเร็วในรายการนี้
+const heroLayers = [
+  { el: hero.querySelector('.layer-sky'), depth: 0.96 },
+  { el: hero.querySelector('.layer-far'), depth: 0.82 },
+  { el: hero.querySelector('.hero-copy'), depth: 0.58 },
+  { el: hero.querySelector('.layer-mid'), depth: 0.28 },
+  { el: hero.querySelector('.layer-near'), depth: 0 }
+];
 let parallaxQueued = false;
 
 function updateParallax() {
   parallaxQueued = false;
-  const scrolled = window.scrollY;
-  if (scrolled > hero.offsetTop + hero.offsetHeight) return; // เลื่อนพ้นหน้าแรกแล้ว ไม่ต้องคำนวณ
+  // จำกัดระยะเคลื่อนเฉพาะช่วงหน้าแรก และชดเชยความสูงเมนู fixed
+  const navHeight = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 0;
+  const scroll = Math.min(heroStage.offsetHeight, Math.max(0, window.scrollY - hero.offsetTop + navHeight));
   heroLayers.forEach(({ el, depth }) => {
-    el.style.transform = reduceMotion.matches ? '' : `translate3d(0, ${(scrolled * depth).toFixed(1)}px, 0)`;
+    el.style.transform = reduceMotion.matches ? '' : `translate3d(0, ${(scroll * depth).toFixed(1)}px, 0)`;
   });
-  // ข้อความหน้าแรกค่อยๆ จางหายเมื่อเลื่อนลง (หายหมดตอนเลื่อนไปครึ่งหน้าแรก)
-  heroCopy.style.opacity = reduceMotion.matches ? '' : Math.max(0, 1 - scrolled / (hero.offsetHeight * 0.5)).toFixed(2);
 }
 function queueParallax() {
+  // รวม scroll หลายครั้งให้เขียน transform ไม่เกินหนึ่งครั้งต่อเฟรม
   if (!parallaxQueued) { parallaxQueued = true; requestAnimationFrame(updateParallax); }
 }
 window.addEventListener('scroll', queueParallax, { passive: true });
