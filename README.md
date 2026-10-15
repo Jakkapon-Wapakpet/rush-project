@@ -23,10 +23,7 @@
 ```sh
 git clone https://github.com/Jakkapon-Wapakpet/rush-project.git
 cd rush-project
-git switch restructure-assets
 ```
-
-โค้ดเว็บไซต์เวอร์ชันที่อธิบายใน README นี้อยู่บน branch `restructure-assets`
 
 เปิด `index.html` ในเบราว์เซอร์ได้โดยตรง หรือเปิดผ่าน local server หากติดตั้ง Python:
 
